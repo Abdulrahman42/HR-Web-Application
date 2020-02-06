@@ -36,14 +36,6 @@
               <td>{{ item.P21S}}</td>
               <td>{{ item.p21T}}</td>
               <td>{{ item.P21B}}</td>
-              <!-- <td>{{item.iron}}</td> -->
-              <!-- <td class="text-xs-right">
-                <v-btn class="ma-2" color="purple" dark @click.prevent="edit">
-                 <v-icon dark>mdi-wrench</v-icon>
-                </v-btn>
-        <v-btn class="ma-2" color="indigo" dark>
-          <v-icon dark>mdi-cloud-upload</v-icon>
-              </v-btn></td>-->
             </template>
           </v-data-table>
         </material-card>

@@ -27,7 +27,7 @@
 </template>
 
 <script>
-  import { mapActions } from 'vuex'
+  import { mapActions, mapState } from 'vuex'
   import materialCard  from '~/components/material/AppCard'
 
   export default {
@@ -38,10 +38,17 @@
       return {
         username: 'admin',
         password: 'admin',
-        defaultUserPassword: 'admin'
+        defaultUserPassword: 'admin',
+        form: {
+          username: '',
+          password: ''
+        }
       }
     },
     computed: {
+      ...mapState({
+        client: state=> state.client.user
+      }),
       isDisabled() {
         return this.username !== this.defaultUserPassword || this.password !== this.defaultUserPassword;
       }
@@ -56,7 +63,11 @@
           await this.setUsername(this.defaultUserPassword);
           this.$router.push({ path: 'dashboard' });
         }
-      }
+      },
+      // authenticate() {
+      //   this.$store.dispatch('client/login', this.form)
+      //   this.$router.push({ path: 'dashboard' })
+      // }
     }
   }
 </script>

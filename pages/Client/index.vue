@@ -4,9 +4,9 @@
       <v-flex md12>
         <div class="text-xs-right">
           <router-link to="/Client/create">
-          <v-btn  fab class="ma-2" color="purple" dark>
-            <v-icon dark>mdi-account-plus</v-icon>
-          </v-btn>
+            <v-btn fab class="ma-2" color="purple" dark>
+              <v-icon dark>mdi-account-plus</v-icon>
+            </v-btn>
           </router-link>
         </div>
         <material-card color="green" title="Daftar Client">
@@ -17,20 +17,47 @@
             class="elevation-1"
           >
             <template slot="items" slot-scope="{ item }">
-                <td>{{ item.name }}</td>
-                <td>{{ item.email }}</td>
+              <td>{{ item.name }}</td>
+              <td>{{ item.email }}</td>
               <td>
-              <router-link :to="`/Employee`">
-                {{ item.company}}
+                <router-link :to="`/Client/${1}`">{{ item.company}}</router-link>
+              </td>
+              <!-- <td>
+              <router-link :to="`/Client/editReportPph`">
+                {{ item.report_pph}}
               </router-link>
+              </td>-->
+              <td class="action">
+                <v-tooltip top>
+                  <template v-slot:activator="{ on }">
+                    <v-icon color="blue" dark @click.prevent="addReport" v-on="on">mdi-plus</v-icon>
+                  </template>
+                  <span class="tol">Tambah Report PPH21</span>
+                </v-tooltip>
+                <v-tooltip top>
+                  <template v-slot:activator="{ on }">
+                    <v-icon color="red" dark @click.prevent="editReport" v-on="on">mdi-pen</v-icon>
+                  </template>
+                  <span class="tol">Ubah Report PPH21</span>
+                </v-tooltip>
               </td>
               <td>{{ item.address }}</td>
               <td>{{ item.phone }}</td>
               <td>{{item.date}}</td>
               <td>{{item.service}}</td>
               <td class="text-xs-right action">
-                  <v-icon color="blue" dark @click.prevent="edit">mdi-pencil</v-icon>
-                  <v-icon color="red" dark @click.prevent="del">mdi-delete</v-icon>
+                <v-tooltip top>
+                  <template v-slot:activator="{ on }">
+                    <v-icon color="blue" dark @click.prevent="editClient" v-on="on">mdi-pencil</v-icon>
+                  </template>
+                  <span class="tol">Ubah Data Perusahaan</span>
+                </v-tooltip>
+                <v-tooltip top>
+                  <template v-slot:activator="{ on }">
+                    <v-icon color="red" dark @click.prevent="deleteClient" v-on="on">mdi-delete</v-icon>
+                  </template>
+                  <span class="tol">Hapus Data Perusahaan</span>
+                </v-tooltip>
               </td>
             </template>
           </v-data-table>
@@ -56,13 +83,14 @@ export default {
           sortable: false,
           value: "name"
         },
-        { text: "Email", value: "email"},
+        { text: "Email", value: "email" },
         { text: "Perusahaan", value: "company" },
+        { text: "Report PPH21", value: "", sortable: false },
         { text: "Alamat", value: "address" },
         { text: "No. Hp", value: "phone" },
-        { text: "Tangg Mulai", value: "date" },
+        { text: "Tanggal Mulai", value: "date" },
         { text: "Service", value: "service" },
-        { text: "Action", value: "", align: "right" }
+        { text: "Action", value: "", align: "right", sortable: false }
       ],
       desserts: [
         {
@@ -77,28 +105,29 @@ export default {
         {
           name: "joko",
           email: "joko@gmail.com",
-          company: "shopciety",
-          address: "PIK",
+          company: "Tokopedia",
+          address: "Sudirman",
           phone: +628,
           date: 4.0,
-          service: "BPJS"
+          service: "BPJS, Salary"
         }
-      ],
+      ]
     };
   },
   methods: {
-    edit() {
+    addReport() {
+      this.$router.push("/Client/addReportPph")
+    },
+    editReport() {
+      this.$router.push("/CLient/editReportPph")
+    },
+    editClient() {
       this.$router.push({
-        path:'Client/edit'
-      })
+        path: "Client/edit"
+      });
     },
-    created() {
-      this.$router.push("Client/create");
-    },
-    del() {
-      this.$confirm("Apa Anda Yakin?").then(()=> {
-
-      })
+    deleteClient() {
+      this.$confirm("Apa Anda Yakin?").then(() => {});
     }
   }
 };
@@ -106,8 +135,11 @@ export default {
 
 <style lang="scss">
 .action {
-  i{
-  margin: 10px;
+  i {
+    margin: 10px;
   }
+}
+.tol {
+  color: white;
 }
 </style>

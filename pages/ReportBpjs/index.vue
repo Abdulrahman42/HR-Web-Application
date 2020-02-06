@@ -4,7 +4,7 @@
       <v-flex md12>
         <div class="select-report">
           <v-col class="d-flex" cols="6" sm="6">
-            <v-select :items="items" label="Pilih Company" solo></v-select>
+            <v-select :items="items" label="Pilih Company" v-model="company" solo></v-select>
           </v-col>
         </div>
         <material-card color="red" title="Report BPJS">
@@ -113,6 +113,11 @@ export default {
           p21T: 0,
           P21B: 0
         }
+      ],
+      company: '',
+      items: [
+        'Shopciety',
+        'Tokopedia'
       ]
     };
   },

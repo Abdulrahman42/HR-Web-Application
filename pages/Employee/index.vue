@@ -2,10 +2,10 @@
   <v-container fill-height fluid grid-list-xl>
     <v-layout justify-center wrap>
       <v-flex md12>
-        <div class="text-xs-right">
-          <v-btn class="ma-2" color="purple" dark @click.prevent="create">
-            <v-icon dark>mdi-account-plus</v-icon>
-          </v-btn>
+         <div class="text-xs-right">
+          <router-link :to="`/Client`">
+            <v-btn class="ma-2" color="purple" dark>Kembali</v-btn>
+          </router-link>
         </div>
         <material-card color="green" title="Daftar Client">
           <v-data-table
@@ -18,11 +18,7 @@
               <!-- <router-link :to="`/Employee`"> -->
                 <td>{{ item.name }}</td>
               <!-- </router-link> -->
-              <td>
-              <router-link :to="`/ReportPph/edit`">
-                {{ item.report_pph}}
-              </router-link>
-                </td>
+     
               <td>
               <router-link :to="`/ReportBpjs/edit`">
                 {{ item.report_bpjs }}
@@ -70,7 +66,7 @@ export default {
           sortable: false,
           value: "name"
         },
-        { text: "Report Pph" },
+        // { text: "Report Pph" },
         { text: "Report Bpjs" },
         { text: "Report Salary" },
         { text: "Report BpjsTk" }
@@ -78,7 +74,7 @@ export default {
       desserts: [
         {
           name: "Abdul Rahman",
-          report_pph: "Ubah",
+          // report_pph: "Ubah",
           report_bpjs: "Ubah",
           report_salary: "ubah",
           report_bpjstk: "ubah"
