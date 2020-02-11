@@ -4,7 +4,7 @@
       <v-flex md12>
             <div class="action-header">
             <v-col class="d-flex" cols="6" sm="6">
-              <v-select :items="items" label="Solo field" solo v-model="mount" @click.prevent="pickMount"></v-select>
+              <v-select :items="itemsMount" label="Pilih Bulan" solo v-model="mount" @click.prevent="pickMount"></v-select>
             </v-col>
             <router-link :to="`/ReportPph`">
               <v-btn class="ma-2" color="purple" dark>Kembali</v-btn>
@@ -25,13 +25,13 @@
               <td class="action">
                 <v-tooltip top>
                   <template v-slot:activator="{ on }">
-                    <v-icon color="blue" dark @click.prevent="addReport" v-on="on">mdi-plus</v-icon>
+                    <v-icon color="blue" dark @click.prevent="addReportBpjs" v-on="on">mdi-plus</v-icon>
                   </template>
                   <span class="tol">Tambah Report Bpjs</span>
                 </v-tooltip>
                 <v-tooltip top>
                   <template v-slot:activator="{ on }">
-                    <v-icon color="red" dark @click.prevent="editReport" v-on="on">mdi-pen</v-icon>
+                    <v-icon color="red" dark @click.prevent="editReportBpjs" v-on="on">mdi-pen</v-icon>
                   </template>
                   <span class="tol">Ubah Report Bpjs</span>
                 </v-tooltip>
@@ -39,13 +39,13 @@
             <td class="action">
                 <v-tooltip top>
                   <template v-slot:activator="{ on }">
-                    <v-icon color="blue" dark @click.prevent="addReport" v-on="on">mdi-plus</v-icon>
+                    <v-icon color="blue" dark @click.prevent="addReportSalary" v-on="on">mdi-plus</v-icon>
                   </template>
                   <span class="tol">Tambah Report Salary</span>
                 </v-tooltip>
                 <v-tooltip top>
                   <template v-slot:activator="{ on }">
-                    <v-icon color="red" dark @click.prevent="editReport" v-on="on">mdi-pen</v-icon>
+                    <v-icon color="red" dark @click.prevent="editReportSalary" v-on="on">mdi-pen</v-icon>
                   </template>
                   <span class="tol">Ubah Report Salary</span>
                 </v-tooltip>
@@ -53,13 +53,13 @@
             <td class="action">
                 <v-tooltip top>
                   <template v-slot:activator="{ on }">
-                    <v-icon color="blue" dark @click.prevent="addReport" v-on="on">mdi-plus</v-icon>
+                    <v-icon color="blue" dark @click.prevent="addReportBpjstk" v-on="on">mdi-plus</v-icon>
                   </template>
                   <span class="tol">Tambah Report BpjsTk</span>
                 </v-tooltip>
                 <v-tooltip top>
                   <template v-slot:activator="{ on }">
-                    <v-icon color="red" dark @click.prevent="editReport" v-on="on">mdi-pen</v-icon>
+                    <v-icon color="red" dark @click.prevent="editReportBpjstk" v-on="on">mdi-pen</v-icon>
                   </template>
                   <span class="tol">Ubah Report BpjsTk</span>
                 </v-tooltip>
@@ -101,17 +101,50 @@ export default {
       ],
       desserts: [
         {
-          name: "Abdul Rahman"
+          name: "Abdul Rahman",
         },
-      ]
+        {
+          name: "Joko"
+        }
+      ],
+      itemsMount: [
+        'Januari',
+        'Februari',
+        'Maret',
+        'April',
+        'Mei',
+        'Juni',
+        'Juli',
+        'Agustus',
+        'September',
+        'Oktober',
+        'November',
+        'Desember'
+      ],
+      mount:''
     };
   },
   methods: {
-    edit() {
-      this.$router.push("edit");
+    pickMount() {
+
     },
-    create() {
-      this.$router.push("create");
+    addReportBpjs() {
+      this.$router.push("/Client/addReportBpjs");
+    },
+    editReportBpjs() {
+      this.$router.push("/Client/editReportBpjs");
+    },
+    addReportSalary() {
+
+    },
+    editReportSalary() {
+
+    },
+    addReportBpjstk() {
+
+    },
+    editReportBpjstk() {
+
     }
   }
 };

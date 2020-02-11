@@ -3,7 +3,7 @@
     <v-layout justify-center wrap>
       <v-flex md12>
         <div class="text-xs-right">
-          <router-link to="/Client/create">
+          <router-link to="/Client/createClient">
             <v-btn fab class="ma-2" color="purple" dark>
               <v-icon dark>mdi-account-plus</v-icon>
             </v-btn>
@@ -22,6 +22,11 @@
               <td>
                 <router-link :to="`/Client/${1}`">{{ item.company}}</router-link>
               </td>
+              <!-- <td >
+                <div @click.prevent="companyToEmployee">
+                  {{item.company}}
+                  </div> 
+                </td> -->
               <!-- <td>
               <router-link :to="`/Client/editReportPph`">
                 {{ item.report_pph}}
@@ -123,11 +128,16 @@ export default {
     },
     editClient() {
       this.$router.push({
-        path: "Client/edit"
+        path: "/Client/editClient"
       });
     },
     deleteClient() {
       this.$confirm("Apa Anda Yakin?").then(() => {});
+    },
+    companyToEmployee() {
+      this.$router.push({
+        path: `/Client/${1}`
+      })
     }
   }
 };

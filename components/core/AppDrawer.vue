@@ -116,12 +116,12 @@ export default {
           text: "Report BPJS"
         },
         {
-          to: "ReportSalary",
+          to: "/ReportSalary",
           icon: "mdi-folder",
           text: "Report Salary",
         },
         {
-          to: "ReportBpjstk",
+          to: "/ReportBpjstk",
           icon: "mdi-folder",
           text: "Report BPJSTK"
         },
@@ -153,12 +153,12 @@ export default {
           text: "Report BPJS"
         },
         {
-          to: "ReportSalary",
+          to: "/ReportSalary",
           icon: "mdi-animation",
           text: "Report Salary",
         },
         {
-          to: "ReportBpjstk",
+          to: "/ReportBpjstk",
           icon: "mdi-animation",
           text: "Report BPJSTK"
         },
@@ -168,7 +168,7 @@ export default {
           text: "Setting"
         }
       ],
-      enables: 1,
+      enables: 0,
       responsive: true
     };
   },
@@ -178,7 +178,14 @@ export default {
       color: "app/getColor",
       drawer: "app/getDrawer"
     }),
-
+    ...mapState({
+      role: state => state.Client.user.roleID
+    }),
+    enable() {
+      this.role.forEach(element => {
+        this.enables = element.roleID
+      });
+    },
     inputValue: {
       get() {
         return this.drawer;
@@ -189,6 +196,7 @@ export default {
     }
   },
   mounted() {
+    this.enable
     this.onResponsiveInverted();
     window.addEventListener("resize", this.onResponsiveInverted);
   },

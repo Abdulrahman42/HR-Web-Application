@@ -1,10 +1,12 @@
 export default () => ({
   user: {
+    id: null,
     username: null,
     email: null,
-    role_id: '',
+    roleID: 0,
     role: '',
     company: '',
+    isLogin: ''
   },
     error: null,
     isLoading: false

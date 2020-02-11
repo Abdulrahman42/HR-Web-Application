@@ -47,10 +47,12 @@
     },
     computed: {
       ...mapState({
-        client: state=> state.client.user
+        client: state => state.client.user,
+        isLogin: state => state.client.user.isLogin
       }),
       isDisabled() {
-        return this.username !== this.defaultUserPassword || this.password !== this.defaultUserPassword;
+        // return this.username !== this.defaultUserPassword || this.password !== this.defaultUserPassword;
+        return this.form.username !== '' || this.form.password !== ''
       }
     },
     methods: {

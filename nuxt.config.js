@@ -52,9 +52,7 @@ export default {
     // Doc: https://axios.nuxtjs.org/usage
     '@nuxtjs/axios',
   ],
-  axios: {
-    baseURL: 'http://localhost:8080/api'
-  },
+
   router: {
     linkActiveClass: 'active'
   },
@@ -63,6 +61,7 @@ export default {
   */
   axios: {
     // See https://github.com/nuxt-community/axios-module#options
+    baseURL: 'http://localhost:8080/api'
   },
 
   /*

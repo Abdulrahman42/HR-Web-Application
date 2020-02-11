@@ -4,7 +4,7 @@
       <v-flex md12>
         <div class="action-header">
             <v-col class="d-flex" cols="6" sm="6">
-              <v-select :items="items" label="Solo field" solo v-model="mount" @click.prevent="pickMount"></v-select>
+              <v-select :items="itemsMount" label="Pilih Bulan" solo v-model="mount" @click.prevent="pickMount"></v-select>
             </v-col>
             <router-link :to="`/ReportPph`">
               <v-btn class="ma-2" color="purple" dark>Kembali</v-btn>
@@ -109,11 +109,21 @@ export default {
           P21B: 0
         }
       ],
-      items: [
-        'January',
-        'February'
+      itemsMount: [
+        'Januari',
+        'Februari',
+        'Maret',
+        'April',
+        'Mei',
+        'Juni',
+        'Juli',
+        'Agustus',
+        'September',
+        'Oktober',
+        'November',
+        'Desember'
       ],
-      mount: ''
+      mount:''
     };
   },
   methods: {
